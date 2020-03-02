@@ -9,7 +9,14 @@ Rails.application.routes.draw do
   #newのurlをsignupにする
   #resourcesに:newも追加しているので/users/newでも新規登録ページが表示される
   get 'signup', to: 'users#new'
-  resources :users, only: [:index, :show, :new, :create]
+  resources :users, only: [:index, :show, :new, :create] do
+    member do
+      get :followings
+      get :followers
+    end
+  end
+  
   
   resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 end
