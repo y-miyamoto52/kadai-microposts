@@ -49,6 +49,10 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
   database: microposts_production
   username: microposts
   password: <%= ENV['MICROPOSTS_DATABASE_PASSWORD'] %>
+
+
+
